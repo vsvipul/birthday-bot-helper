@@ -1,0 +1,13 @@
+name: 'Birthday Bot Helper'
+description: 'Action to extract dates from a json file and if it matches with current date, create output for a slack message.'
+inputs:
+  file-name:
+    description: 'File name that contains dates.'
+    required: false
+    default: dates.json
+outputs:
+  messageList: # id of output
+    description: 'List of messages to be posted to the slack channel.'
+runs:
+  using: 'node16'
+  main: 'index.js'

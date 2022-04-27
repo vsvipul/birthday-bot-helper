@@ -1,0 +1,24 @@
+{
+  "name": "birthday-bot-helper",
+  "version": "1.0.0",
+  "description": "Action to extract dates from a json file and if it matches with current date, create output for a slack message.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vsvipul/birthday-bot-helper.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vsvipul/birthday-bot-helper/issues"
+  },
+  "homepage": "https://github.com/vsvipul/birthday-bot-helper#readme",
+  "dependencies": {
+    "@actions/core": "^1.7.0",
+    "fs": "0.0.1-security"
+  }
+}
