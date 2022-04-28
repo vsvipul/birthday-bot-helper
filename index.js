@@ -21,9 +21,18 @@ try {
 
   // Get messages to post on slack channel
   var messageList = [];
-  itemList.forEach(item => {
-    messageList.push("Happy Birthday to @" + item.name + " ! :D");
-  });
+  var userString = "";
+  for (let i=0; i<itemList.size(); i++) {
+    if (itemList.size() > 1) {
+      if (i == itemList.size()-1) {
+        userString += " and ";
+      } else {
+        userString += ", ";
+      }
+    }
+    userString += "@" + itemList[i].name;
+  }
+  messageList.push("Happy Birthday to " + userString + " ! :cake-intensifies::cake2::celebration-cat::meow-celebration:");
   console.log(messageList);
 
   // Set messageList as an output to be used in other workflow steps
