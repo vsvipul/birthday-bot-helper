@@ -22,9 +22,9 @@ try {
   // Get messages to post on slack channel
   var messageList = [];
   var userString = "";
-  for (let i=0; i<itemList.size(); i++) {
-    if (itemList.size() > 1) {
-      if (i == itemList.size()-1) {
+  for (let i=0; i<itemList.length; i++) {
+    if (itemList.length > 1) {
+      if (i == itemList.length-1) {
         userString += " and ";
       } else {
         userString += ", ";
