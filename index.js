@@ -23,7 +23,7 @@ try {
   var messageList = [];
   var userString = "";
   for (let i=0; i<itemList.length; i++) {
-    if (itemList.length > 1) {
+    if (i!=0 && itemList.length > 1) {
       if (i == itemList.length-1) {
         userString += " and ";
       } else {
@@ -32,7 +32,7 @@ try {
     }
     userString += "@" + itemList[i].name;
   }
-  messageList.push("Happy Birthday to " + userString + " ! :cake-intensifies::cake2::celebration-cat::meow-celebration:");
+  messageList.push("It’s party time! Happy Birthday to " + userString + " ! :cake-intensifies::meow-celebration:");
   console.log(messageList);
 
   // Set messageList as an output to be used in other workflow steps
