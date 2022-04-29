@@ -32,7 +32,9 @@ try {
     }
     userString += "@" + itemList[i].name;
   }
-  messageList.push("It’s party time! Happy Birthday to " + userString + " ! :cake-intensifies::meow-celebration:");
+  if (itemList.length > 0) {
+    messageList.push("It’s party time! Happy Birthday to " + userString + " ! :cake-intensifies::meow-celebration:");
+  }
   console.log(messageList);
 
   // Set messageList as an output to be used in other workflow steps
