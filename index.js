@@ -9,7 +9,7 @@ try {
   // Get date to match in the required format
   var dateToMatch = new Date();
   if (purpose === "reminder") {
-    dateToMatch = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
+    dateToMatch = new Date(dateToMatch.getFullYear(), dateToMatch.getMonth(), dateToMatch.getDate()+7);
   }
   const dd = String(dateToMatch.getDate()).padStart(2, '0');
   const mm = String(dateToMatch.getMonth() + 1).padStart(2, '0'); //January is 0!
