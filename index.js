@@ -3,12 +3,18 @@ const fs = require('fs');
 
 try {
   const fileName = core.getInput('file-name');
-  // Get todays date in the required format
-  var today = new Date();
-  const dd = String(today.getDate()).padStart(2, '0');
-  const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-  today = dd + '/' + mm;
-  console.log(today);
+  const purpose = core.getInput('purpose');
+
+  // Date to match will be todays date for birthday wish and 1 week laters date for reminder
+  // Get date to match in the required format
+  var dateToMatch = new Date();
+  if (purpose === "reminder") {
+    dateToMatch = new Date(today.getFullYear(), today.getMonth(), today.getDate()+7);
+  }
+  const dd = String(dateToMatch.getDate()).padStart(2, '0');
+  const mm = String(dateToMatch.getMonth() + 1).padStart(2, '0'); //January is 0!
+  dateToMatch = dd + '/' + mm;
+  console.log(dateToMatch);
 
   // Get the JSON file with the dates and messages
   var file = fs.readFileSync(fileName);
@@ -17,7 +23,7 @@ try {
 
   // Get entries of festivals with todays date
   itemList = datesList.filter(item =>
-    item.date == today);
+    item.date == dateToMatch);
 
   // Get messages to post on slack channel
   var messageList = [];
@@ -33,7 +39,11 @@ try {
     userString += "@" + itemList[i].name;
   }
   if (itemList.length > 0) {
-    messageList.push("It’s party time! Happy Birthday to " + userString + " ! :cake-intensifies::meow-celebration:");
+    if (purpose === "reminder") {
+      messageList.push("Upcoming birthdays a week from today - " + userString + " ! :cake-intensifies::meow-celebration:");
+    } else {
+      messageList.push("It’s party time! Happy Birthday to " + userString + " ! :cake-intensifies::meow-celebration:");
+    }
   }
   console.log(messageList);
 

@@ -5,6 +5,10 @@ inputs:
     description: 'File name that contains dates.'
     required: false
     default: dates.json
+  purpose:
+    description: 'Whether the helper is being used for the reminder or for the birthday wish. Can be one of reminder or wish'
+    required: false
+    default: wish
 outputs:
   messageList: # id of output
     description: 'List of messages to be posted to the slack channel.'
