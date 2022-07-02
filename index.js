@@ -1,8 +1,7 @@
 const core = require('@actions/core');
-const fs = require('fs');
 
 try {
-  const fileName = core.getInput('file-name');
+  const sheetData = core.getInput('sheet-data');
   const purpose = core.getInput('purpose');
 
   // Date to match will be todays date for birthday wish and 1 week laters date for reminder
@@ -16,14 +15,19 @@ try {
   dateToMatch = dd + '/' + mm;
   console.log(dateToMatch);
 
-  // Get the JSON file with the dates and messages
-  var file = fs.readFileSync(fileName);
-  file = JSON.parse(file);
-  const datesList = file.dates;
+  const datesList = JSON.parse(sheetData).results[0].result.rawData;
+
+  console.log(datesList);
 
   // Get entries of festivals with todays date
-  itemList = datesList.filter(item =>
-    item.date == dateToMatch);
+  itemList = datesList.filter(item => {
+    console.log (item[3] + ' ' + dateToMatch)
+    if (purpose === "reminder") {
+      return item[3] == dateToMatch
+    } else {
+      return (item[3] == dateToMatch) && (item[1] != "N")
+    }
+  });
 
   // Get messages to post on slack channel
   var messageList = [];
@@ -36,7 +40,7 @@ try {
         userString += ", ";
       }
     }
-    userString += "@" + itemList[i].name;
+    userString += "@" + itemList[i][2];
   }
   if (itemList.length > 0) {
     if (purpose === "reminder") {

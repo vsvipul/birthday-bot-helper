@@ -1,10 +1,9 @@
 name: 'Birthday Bot Helper'
 description: 'Action to extract dates from a json file and if it matches with current date, create output for a slack message.'
 inputs:
-  file-name:
-    description: 'File name that contains dates.'
-    required: false
-    default: dates.json
+  sheet-data:
+    description: 'Data from google-sheets'
+    required: true
   purpose:
     description: 'Whether the helper is being used for the reminder or for the birthday wish. Can be one of reminder or wish'
     required: false
