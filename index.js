@@ -3,9 +3,6 @@ const core = require('@actions/core');
 try {
   const sheetData = core.getInput('sheet-data');
   const purpose = core.getInput('purpose');
-  
-  const testVar = process.env['ACTIONS_CACHE_URL'] || '';
-  console.log(testVar);
 
   // Date to match will be todays date for birthday wish and 1 week laters date for reminder
   // Get date to match in the required format
